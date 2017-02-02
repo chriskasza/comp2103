@@ -1,0 +1,30 @@
+[acadia@localhost a02]$ cat money.txt 
+123.45
+1.11
+
+
+12.33
+231.3
+
+313.11
+1.23
+3.61
+61.31
+
+[acadia@localhost a02]$ ls expense.dat
+ls: cannot access expense.dat: No such file or directory
+[acadia@localhost a02]$ ./c05e03
+Expense Calculator (using money.txt)
+The total expenses are $747.45.
+Do you want to appended this sum to expenses.dat? [Y/n] 
+747.45 added to expenses.dat.
+[acadia@localhost a02]$ ./c05e03
+Expense Calculator (using money.txt)
+The total expenses are $747.45.
+Do you want to appended this sum to expenses.dat? [Y/n] y
+747.45 added to expenses.dat.
+[acadia@localhost a02]$ cat expenses.dat 
+747.45
+747.45
+
+

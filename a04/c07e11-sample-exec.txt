@@ -1,0 +1,3 @@
+user@macbook:~/comp2103/a04$ ./c07e11
+There are 50 digits in abc.dat.
+

@@ -1,0 +1,10 @@
+[acadia@localhost COMP2103]$ ./c03e11
+Enter the length of the radius of the circle: 3.14
+
+The area of the circle with that radius in a field with width 10) is 
+30.9748    (fixed-point notation, left justified, precision 4)
+   30.9748 (fixed-point notation, right justified, precision 4)
+00030.9748 (fixed-point notation, right justified, precision 4, padded with 0's)
+3.0975e+01 (scientific notation, left justified, precision 4)
+3.0975e+01 (scientific notation, right justified, precision 4)
+

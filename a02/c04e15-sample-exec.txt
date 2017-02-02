@@ -1,0 +1,18 @@
+[acadia@localhost a02]$ ./c04e15
+Fraction to Decimal Converter
+Enter [m] for mixed fraction or [i] for improper fraction: a
+Invalid choice.  Enter [m] for mixed fraction or [i] for improper fraction: -1
+Invalid choice.  Enter [m] for mixed fraction or [i] for improper fraction: m
+Enter a mixed fraction (ex. "1 4/5"): 124 352
+Invalid input. Enter a mixed fraction (ex. "1 4/5"): 1/5
+Invalid input. Enter a mixed fraction (ex. "1 4/5"): 123 1123/9999
+
+The equivalent decimal value of 1231000/9999 is 123.112311.
+[acadia@localhost a02]$ ./c04e15
+Fraction to Decimal Converter
+Enter [m] for mixed fraction or [i] for improper fraction: i
+Enter an improper fraction (ex. "6/5"): 1 1/2
+Invalid input.  Enter an improper fraction (ex. "6/5"): 234/1234
+
+The equivalent decimal value of 234/1234 is 0.189627.
+

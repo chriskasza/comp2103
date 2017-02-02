@@ -1,0 +1,5 @@
+user@macbook:~/comp2103/a04$ ./c07e15-driver 
+For a polygon with 5 nodes, the number of arcs is 10.
+For a polygon with 6 nodes, the number of arcs is 15.
+For a polygon with 7 nodes, the number of arcs is 21.
+

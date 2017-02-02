@@ -1,0 +1,7 @@
+user@macbook:~/comp2103/a04$ ./c07e07
+err: ./c07e07 requires two numerical arguments
+
+user@macbook:~/comp2103/a04$ ./c07e07 3 4
+12.000000
+
+

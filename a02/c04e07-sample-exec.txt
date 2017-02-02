@@ -1,0 +1,30 @@
+[acadia@localhost a02]$ ./c04e07
+Enter a bunch of integers no larger than 100.
+I'll calculate the average and minimum.
+Enter -1 when you're finished.
+1214
+No integers were inputted; therefore min and avg cannot be calculated.
+[acadia@localhost a02]$ ./c04e07
+Enter a bunch of integers no larger than 100.
+I'll calculate the average and minimum.
+Enter -1 when you're finished.
+123
+No integers were inputted; therefore min and avg cannot be calculated.
+[acadia@localhost a02]$ ./c04e07
+Enter a bunch of integers no larger than 100.
+I'll calculate the average and minimum.
+Enter -1 when you're finished.
+100
+0
+-2
+-45000
+99
+00
+99
+
+a
+
+Thank you for entering all 7 of those integers.  You're amazing.
+The minimum integer you entered is -45000.
+The average of all of the integers is -6386 (rounded to the nearest integer).
+

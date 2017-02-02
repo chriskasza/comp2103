@@ -1,0 +1,21 @@
+[acadia@localhost COMP2103]$ ./c03e15
+Please enter a string with five characters.
+The second and fourth characters will be identified.
+ab^Dde
+
+Character #2 is b.
+Character #4 is d.
+
+What happens if the third character is the EOF character?
+	If the EOF character is entered as the third character, the for loop will exit and the fourth character will not be read.  In UNIX the EOF character is ^D; however, I was not able to reproduce this behaviour with gcc 5.3.1 on Fedora 23.
+	
+[acadia@localhost COMP2103]$ ./c03e15
+Please enter a string with five characters.
+The second and fourth characters will be identified.
+ab^Zde
+
+Character #2 is b.
+Character #4 is d.
+
+What happens if the third character is the EOF character?
+	If the EOF character is entered as the third character, the for loop will exit and the fourth character will not be read.  In UNIX the EOF character is ^D; however, I was not able to reproduce this behaviour with gcc 5.3.1 on Fedora 23.

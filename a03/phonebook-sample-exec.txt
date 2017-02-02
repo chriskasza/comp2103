@@ -1,0 +1,107 @@
+root# sh ./phonebook.sh
+My Phone Book
+
+Enter the name of your phonebook file.  File should be in current directory.
+$ phone.dat
+
+Available commands:
+	1. Look someone up
+	2. Add someone to the phone book
+	3. Remove someone from the phone book
+	4. List all names and numbers in the phone book
+	5. Change the prompt
+	6. See the menu
+	7. Exit the program
+Please select one of the above (1-6): a
+
+'a' are not a recognized menu option
+
+: 5  
+Type in your new prompt: PROMPT
+
+PROMPT: 4
+There are 3 item(s): 
+
+#1:
+Chris Kasza
+1472 J Jordan Rd
+Canning, NS
+
+#2:
+Bordo Bilob
+Brindo St.
+Groimllly, ON
+CA
+
+#3:
+Joel Huntley
+67 Hitchcock Dr.
+Primbold, NS
+B0P1X0
+
+
+PROMPT: 3
+
+Enter name to remove: NS
+There are 2 item(s): 
+
+#1:
+Chris Kasza
+1472 J Jordan Rd
+Canning, NS
+
+#2:
+Joel Huntley
+67 Hitchcock Dr.
+Primbold, NS
+B0P1X0
+
+Do you want to remove all found? y/[n] y
+
+PROMPT: 4
+There are 1 item(s): 
+
+#1:
+Bordo Bilob
+Brindo St.
+Groimllly, ON
+CA
+
+
+PROMPT: 2
+
+Type in your entry, terminate with a single RETURN on the line: 
+>> Chris Kasz
+>> 1472 J Jordan
+>> Canning, NS
+>> 
+Chris Kasz added to the book
+
+PROMPT: 1
+
+Enter name to look up: Bordo
+There are 1 item(s): 
+
+#1:
+Bordo Bilob
+Brindo St.
+Groimllly, ON
+CA
+
+
+PROMPT: 6
+
+Available commands:
+	1. Look someone up
+	2. Add someone to the phone book
+	3. Remove someone from the phone book
+	4. List all names and numbers in the phone book
+	5. Change the prompt
+	6. See the menu
+	7. Exit the program
+Please select one of the above (1-6): 7
+
+Good bye...
+
+root#
+

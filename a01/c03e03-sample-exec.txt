@@ -1,0 +1,12 @@
+[acadia@localhost COMP2103]$ ./c03e03
+
+To start, i = 4 and j = 6.
+
+Perform "++i - j--".
+Now, i = 5 and j = 5.
+
+Perform "i += j/2".
+Now, i = 7 and j = 5.
+
+Perform "i % 2 + (j+=4)".
+Now, i = 7 and j = 9.

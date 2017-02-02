@@ -1,0 +1,58 @@
+[acadia@localhost a02]$ cat c05e11.c | ./c05e11
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+	FILE *f;
+	int c, d, e;
+	int flag = 0;  
+	f = stdin;
+	int debug = 1; 
+	
+	while((c = fgetc(f)) != EOF) {
+		if(c == '/') {
+			
+			if((d = fgetc(f)) == EOF) {
+				
+				fprintf(stdout, "%c",c);
+				flag = 1;
+ 			} else if(d == '/') {
+				
+				while(1) {
+					if((((d = fgetc(f)) == EOF) && (flag = 1)) || d == '\n') {
+						fprintf(stdout, "\n");
+						break;
+					}
+				}
+			} else if(d == '*') {
+				
+				while(1) {
+					if((d = fgetc(f)) == EOF) {
+						flag = 1;
+						break;
+					} else if(d == '*') {
+						if((e = fgetc(f)) == EOF) {
+							flag = 1;
+							break;
+						} else if(e == '/') {
+							break;
+						}
+					}
+				}
+			} else {
+				fprintf(stdout, "%c",c);
+				fprintf(stdout, "%c",d);
+			}
+		} else {
+			fprintf(stdout, "%c",c);
+		}
+
+		if(flag == 1) {
+			break;
+		}
+	}
+
+	return EXIT_SUCCESS;
+}
+
