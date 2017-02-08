@@ -24,44 +24,97 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static int *coefficients;
-
 int main( ) {
-	int exes;
-	
-	printf("Enter the highest power of x in the equation (ex. highest power of x in y=x^3+4x-2 is 3): ");
-	if(scanf("%d", &exes) != 1) {
-		fprintf(stderr, "invalid power\n");
-		return EXIT_FAILURE;
-	}
+   int s;
+   double x1, y1, c1, x2, y2, c2;
+   double a1, b1, a2, b2;
 
-	int size = atoi(exes);
-	coefficients = malloc(size * sizeof(*coefficients));
+   printf("Enter a maximum of 3 values.  The number of values corresponds to the following line formats:\n");
+   printf("1) y = b\n");
+   printf("2) y = mx + b\n");
+   printf("3) Ax + By + C = 0\n");
 
-	/* for x = exes; x>=0; x--; {
-		printf("Enter the coefficient of x^%d", x); 
-		if(scanf("%d", &coefficient) != 1) {
-			fprintf(stderr, "invalid power\n");
-			return EXIT_FAILURE;
-		}
-		coefficients[x] = coefficient;
-	}
-	*/
+   if(scanf("%d", &s) != 1 || s < 1 || s > 4) {
+      fprintf(stderr, "invalid choice\n");
+      return EXIT_FAILURE;
+   }
 
+   switch(s) {
+   case 1:
+      printf("\nEnter the three values corresponding to A, B, C for the first line: ");
+      if(scanf("%lf%lf%lf", &x1, &y1, &c1) != 3) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("Enter the three values corresponding to A, B, C for the second line: ");
+      if(scanf("%lf%lf%lf", &x2, &y2, &c2) != 3) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("\nLine1: %fx + %fy + %f = 0\n", x1, y1, c1);
+      printf("Line2: %fx + %fy + %f = 0\n", x2, y2, c2);
+      a1 = x1 * -1 / y1;
+      b1 = c1 * -1 / y1;
+      a2 = x2 * -1 / y2;
+      b2 = c2 * -1 / y2;
+      break;
+   case 2:
+      printf("Enter the three values corresponding to m and b for the first line: ");
+      if(scanf("%lf%lf", &a1, &b1) != 2) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("Enter the three values corresponding to m and b for the second line: ");
+      if(scanf("%lf%lf", &a2, &b2) != 2) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("\nLine1: y = %fx + %f\n", a1, b1);
+      printf("Line2: y = %fx + %f\n", a2, b2);
+      break;
+   case 3:
+      printf("Enter the three values corresponding to A, B, C for the first line: ");
+      if(scanf("%lf%lf%lf", &x1, &y1, &c1) != 3) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("Enter the three values corresponding to A, B, C for the second line: ");
+      if(scanf("%lf%lf%lf", &x2, &y2, &c2) != 3) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("\nLine1: %fx + %fy = %f\n", x1, y1, c1);
+      printf("Line2: %fx + %fy = %f\n", x2, y2, c2);
+      a1 = x1 * -1 / y1;
+      b1 = c1 / y1;
+      a2 = x2 * -1 / y2;
+      b2 = c2 / y2;
+      break;
+   case 4:
+      printf("Enter the value corresponding to m for the first line: ");
+      if(scanf("%lf", &b1) != 1) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("Enter the value corresponding to m for the second line: ");
+      if(scanf("%lf", &b2) != 1) {
+         fprintf(stderr, "invalid value\n");
+         return EXIT_FAILURE;
+      }
+      printf("\nLine1: y = %f\n", b1);
+      printf("Line2: y = %f\n", b2);
+      a1 = 0;
+      a2 = 0;
+      break;
+   default:
+      printf("Unknown line selection.\n");
+      return EXIT_FAILURE;
+   }
 
-	double a1, b1, a2, b2;
+   printf("\nLines are %sparallel\n", 
+      parallel_c07e27(a1,b1,a2,b2)? "" : "not ");
+   printf("Lines are %sperpendicular\n", 
+      perpendicular_c07e27(a1,b1,a2,b2)? "" : "not ");
 
-	printf("Enter 4 values representing two lines\n");
-	if(scanf("%lf%lf%lf%lf", &a1, &b1, &a2, &b2) != 4) {
-		fprintf(stderr, "invalied coefficients\n");
-		return EXIT_FAILURE;
-	}
-	printf("Line1: y = %fx +%f\n", a1, b1);
-	printf("Line2: y = %fx +%f\n", a2, b2);
-	printf("Lines are %s parallel\n", 
-		parallel_Lines(a1,b1,a2,b2)? "" : "not");
-	printf("Lines are %s perpendicular\n", 
-		perpendicular_Lines(a1,b1,a2,b2)? "" : "not");
-
-	return EXIT_SUCCESS;
+   return EXIT_SUCCESS;
 }
