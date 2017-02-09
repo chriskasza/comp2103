@@ -29,12 +29,10 @@ int main( ) {
    double x1, y1, c1, x2, y2, c2;
    double a1, b1, a2, b2;
 
-   printf("Which form do you want to use for your lines?\n");
-   printf("1) Ax + By + C = 0\n");
+   printf("Enter a maximum of 3 values.  The number of values corresponds to the following line formats:\n");
+   printf("1) y = b\n");
    printf("2) y = mx + b\n");
-   printf("3) Ax + By = C\n");
-   printf("4) y = b\n");
-   printf("1, 2, 3, or 4?: ");
+   printf("3) Ax + By + C = 0\n");
 
    if(scanf("%d", &s) != 1 || s < 1 || s > 4) {
       fprintf(stderr, "invalid choice\n");
@@ -114,9 +112,9 @@ int main( ) {
    }
 
    printf("\nLines are %sparallel\n", 
-      parallel_Lines(a1,b1,a2,b2)? "" : "not ");
+      parallel_c07e27(a1,b1,a2,b2)? "" : "not ");
    printf("Lines are %sperpendicular\n", 
-      perpendicular_Lines(a1,b1,a2,b2)? "" : "not ");
+      perpendicular_c07e27(a1,b1,a2,b2)? "" : "not ");
 
    return EXIT_SUCCESS;
 }
