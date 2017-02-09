@@ -13,13 +13,6 @@
  * 
  */
 
-/*
- * File: ex7-4-lines-main.c
- * An application of the module with two simple operations on lines.
- * The user enters coefficients of two lines, and the program
- *   checks if these two lines are parallel and perpendicular
- */
-
 #include "ex7-4-lines.h"
 #include <stdlib.h>
 #include <stdio.h>
