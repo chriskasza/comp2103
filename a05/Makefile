@@ -2,7 +2,7 @@ CC         = gcc
 CFLAGS     = -Wall -pedantic
 LIB        = -lm
 FILE23     = c07e23
-OBJ27      = c07e27.o c07e27-main.o
+OBJ27      = c07e27.o c07e27-main.o ex7-4-lines.o
 
 all: c07e23 c07e27
 

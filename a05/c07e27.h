@@ -26,7 +26,7 @@
  * Since the lines 1*x + 2*y + 3*z = 0 and 1*x + 2*y + 3*z = 0 are parallel
  * the value of i will be 1.
  */
-int parallel_c07e27(double a1, double b1, double c1, double a2, double b2, double c2);
+int parallel_c07e27(int n, ...);
 
 /* 
  * Function: perpendicular_c07e27
@@ -40,6 +40,6 @@ int parallel_c07e27(double a1, double b1, double c1, double a2, double b2, doubl
  * Since the lines 1*x + 2*y + 3*z = 0 and 1*x + 2*y + 3*z = 0 are not perpendicular 
  * the value of i will be 0.
  */
-int perpendicular_c07e27(double a1, double b1, double c1, double a2, double b2, double c2);
+int perpendicular_c07e27(int n, ...);
 
 #endif
