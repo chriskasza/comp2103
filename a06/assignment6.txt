@@ -1,0 +1,18 @@
+8-1 (p. 296) 
+Write a procedure alter(x, y) which changes the values of x to x-y, and the 
+value of y to 2 (x and y are of type double). Use the Pass by Reference idiom.
+
+8-3 (p. 297) 
+Correct comments of four funcs provided, then implement each, specify which
+idioms were used, and write a main program to use funcs for
+a) alloate memory to store 10 double values
+b) read a most 10 values
+c) print these values
+d) output max value
+
+8-11 (p. 300)
+Implement a generic module Bags that represents an unordered collection
+(a bag; duplicates allowed).  Use the "Callback" idiom to compare the elements
+of a bag.  There should be operations to add an element to teh bag, and remove 
+it from the bag.  Add enumerations over the collection.  Test your module with 
+a collection of double objects, and a collectino of integer objects.
