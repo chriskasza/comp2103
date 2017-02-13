@@ -26,7 +26,7 @@ c08e03: $(OBJ03)
 	$(CC) $(CFLAGS) -o $@ $^
 
 c08e03.o: c08e03.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) $(LIB) -c $<
 
 c08e03-main.o: c08e03-main.c
 	$(CC) $(CFLAGS) -c $<

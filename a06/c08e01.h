@@ -10,6 +10,9 @@
  *
  */
 
+#ifndef C08E01
+#define C08E01
+
 /*
  * Function: alter
  * Purpose: modify two variables using references
@@ -22,3 +25,5 @@
  * a will be modified to (a - b) and b will be modified to 2.
  */
 void alter(double *x, double *y);
+
+#endif
