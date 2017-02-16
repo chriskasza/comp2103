@@ -14,15 +14,7 @@
 #include <stdlib.h>
 
 /*
- * Function: alter
- * Purpose: modify two variables using references
- * Inputs: x, y - parameters of references for doubles
- * Returns: Nothing
- * Modifies: the two references passed
- * Error checking: None
- * Sample call:
- *    alter(a, b)
- * a will be modified to (a - b) and b will be modified to 2.
+ *
  */
 int main() {
   double a = 5;
