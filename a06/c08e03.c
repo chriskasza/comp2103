@@ -6,7 +6,7 @@
  * File:       c08e01.c
  *
  * This module contains methods for creating and working with blocks of
- * double arrays.
+ * dynamically sized memory holding doubles.
  *
  */
 
@@ -25,9 +25,9 @@
  * Modifies: allocates memory for the block.
  * Error checking: None.
  * Sample call:
- *   double arr[] = myAlloc(13);
- * Memory is allocated store 13 values of type double and the reference to the
- * block is assigned to x.
+ *   double *b = myAlloc(13);
+ * Memory is allocated to store 13 values of type double and the address to the
+ * block is assigned to b.
  * Idiom used: Memory Allocation for n Integers.
  *
  */

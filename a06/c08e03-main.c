@@ -10,6 +10,7 @@
  */
 
 #include "c08e03.h"
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -20,9 +21,17 @@ int main() {
   double *b;
 
   b = myAlloc(10);
+
   get(b, 10);
+
+  printf("\nValues entered were: \n");
   show(b, 10);
-  max(b, 10);
+
+  printf("\nMax value entered was %lf.\n", max(b, 10));
+
+  /*  Dereferencing for practice */
+  free(b);
+  b == NULL;
 
   return EXIT_SUCCESS;
 }

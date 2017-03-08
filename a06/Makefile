@@ -23,10 +23,10 @@ c08e01-main.o: c08e01-main.c
 
 
 c08e03: $(OBJ03)
-	$(CC) $(CFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) -o $@ $^ $(LIB)
 
 c08e03.o: c08e03.c
-	$(CC) $(CFLAGS) $(LIB) -c $<
+	$(CC) $(CFLAGS) -c $<
 
 c08e03-main.o: c08e03-main.c
 	$(CC) $(CFLAGS) -c $<

@@ -4,7 +4,7 @@
 wd=a06
 
 # a name for the session
-SESSION=$USER
+SESSION=comp2103
 
 # start session
 tmux -2 new-session -d -s $SESSION
