@@ -27,11 +27,11 @@ int main() {
   printf("\nValues entered were: \n");
   show(b, 10);
 
-  printf("\nMax value entered was %lf.\n", max(b, 10));
+  printf("\nMax value entered was %f.\n", max(b, 10));
 
   /*  Dereferencing for practice */
   free(b);
-  b == NULL;
+  b = NULL;
 
   return EXIT_SUCCESS;
 }

@@ -1,5 +1,5 @@
 CC         = gcc
-CFLAGS     = -Wall -pedantic
+CFLAGS     = -Wall -pedantic -std=c89
 LIB        = -lm
 BINS       = c08e01 c08e03 c08e11
 OBJ01      = c08e01.o c08e01-main.o

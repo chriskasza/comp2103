@@ -18,6 +18,23 @@
   (((p) = malloc((n)*sizeof(type))) == NULL)
 
 /*
+ * Function: round
+ * Purpose: round a double to an integer
+ * Input: x is a double value
+ * Returns: x, rounded to the nearest integer
+ * Error checking: none
+ * Sample call:
+ *   a = round(3.1)
+ *   -- will return 3
+ *   b = round(3.5)
+ *   -- will return 4
+ *
+ */
+int round(double x) {
+  return (x >= 0) ? (int)(x + 0.5) : (int)(x - 0.5);
+}
+
+/*
  * Function: myAlloc
  * Purpose: allocates a block of memory to store n double values.
  * Inputs: n (parameter) - the size of the block to be created.
@@ -72,6 +89,7 @@ int get(double block[], int size) {
     }
     while ((c = getchar()) != EOF && c != '\n');
     if (round(block[i]) == 1) {
+      block[i] = 0;
       break;
     }
   }
@@ -98,7 +116,7 @@ void show(double *block, int size) {
   int i;
 
   for (i = 0; i < size; i++) {
-    printf("%lf\n", block[i]);
+    printf("%f\n", block[i]);
   }
 }
 

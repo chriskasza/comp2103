@@ -3,7 +3,7 @@
  * Student #:  100133723
  * Course:     COMP 2103 N1
  * Version:    1.0
- * File:       c08e03.c
+ * File:       c08e03.h
  *
  * This module contains methods for creating and working with blocks of 
  * memory holding doubles.
@@ -12,6 +12,21 @@
 
 #ifndef C08E03
 #define C08E03
+
+/*
+ * Function: round
+ * Purpose: round a double to an integer
+ * Input: x is a double value
+ * Returns: x, rounded to the nearest integer
+ * Error checking: none
+ * Sample call:
+ *   a = round(3.1)
+ *   -- will return 3
+ *   b = round(3.5)
+ *   -- will return 4
+ *
+ */
+int round(double x);
 
 /*
  * Function: myAlloc
