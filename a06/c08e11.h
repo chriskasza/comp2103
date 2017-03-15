@@ -38,7 +38,7 @@ int add(double item);
  *   -- removes first occurrence of 3 from the bag and returns 0
  *
  */
-int remove(double item);
+int remove(void **item);
 
 /*
  * Function: find
@@ -51,5 +51,5 @@ int remove(double item);
  *   -- finds the first occurrence of 3 in the bag and returns 0
  *
  */
-int find(double item);
+int find(void **item);
 
