@@ -3,15 +3,23 @@
  * Student #:  100133723
  * Course:     COMP 2103 N1
  * Version:    1.0
- * File:       c08e11.h
+ * File:       c08e11.c
  *
  * This module provides a generic "bag" - a set where duplicate elements are
  * permitted.  The module provides simple add and remove operations, as well
  * as enumeration.
  */
 
-#ifndef C08E11
-#define C08E11
+#include <stdlib.h>
+#include "c08e11.h"
+
+#define NOT_INITIALIZED 0
+#define INITIALIZED 1
+
+static int initialized_ = NOT_INITIALIZED;
+
+static void *bag_ = NULL;  /* the bag */
+static void *current_ = NULL; /* current item for enumeration */
 
 /*
  * Function:       bag_construct
@@ -29,7 +37,20 @@
  *      printf("failed to make the bag");
  *
  */
-int bag_construct(int count, size_t size);
+int bag_construct(int count, size_t size) {
+  if(initialized_ == INITIALIZED)
+    return 0;
+
+  if(count < 1 || size < 1)
+    return 0;
+
+  if((bag_ = malloc(count*size)) == NULL)
+    return 0;
+
+  initialized_ = INITIALIZED;
+
+  return 1;
+}
 
 /*
  * Function:       bag_destruct
@@ -43,7 +64,16 @@ int bag_construct(int count, size_t size);
  *      printf("failed to destruct the bag");
  *
  */
-int bag_destruct();
+int bag_destruct() {
+  if(initialized_ == NOT_INITIALIZED)
+    return 0;
+
+  free(bag_);
+  initialized_ = NOT_INITIALIZED;
+  bag_ = NULL;
+
+  return 1;
+}
 
 /*
  * Function:       bag_add
@@ -60,7 +90,9 @@ int bag_destruct();
  *      printf("failed to add number to the bag");
  *
  */
-int bag_add(void *item);
+int bag_add(void *item) {
+  
+}
 
 /*
  * Function:       bag_remove
@@ -75,7 +107,9 @@ int bag_add(void *item);
  *    if(bag_remove(number1) == 0)
  *      printf("failed to remove number1 from the bag");
  */
-int bag_remove(void *item);
+int bag_remove(void *item) {
+
+}
 
 /*
  * Function:       bag_find
@@ -83,6 +117,7 @@ int bag_remove(void *item);
  * Input:          item to be found in the bag
  * Returns:        address of the first occurrence of the item in the bag
  *                 or 0 if unsuccessful
+ * Modifies:       
  * Error checking: none
  * Sample call:
  *    double number2 = 123.4
@@ -90,6 +125,26 @@ int bag_remove(void *item);
  *    if((numaddr = bag_find(number2)) == 0)
  *      printf("failed to find number2 in the bag");
  */
-void *bag_find(void *item);
+void *bag_find(void *item) {
+  /* use quicksort and binary search from stdlib.h? */
+}
 
-#endif
+
+/*
+ * Function:       bag_next
+ * Purpose:        return the item from the bag
+ * Input:          
+ * Returns:        pointer to the next item or NULL if there is none
+ * Modifies:       
+ * Error checking: none
+ * Sample call:
+ *    double number2 = 123.4
+ *    double *numaddr;
+ *    if((numaddr = bag_find(number2)) == 0)
+ *      printf("failed to find number2 in the bag");
+ */
+void *bag_next() {
+
+}
+
+
