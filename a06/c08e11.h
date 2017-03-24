@@ -82,7 +82,7 @@ int bag_remove(void *item);
  * Purpose:        find an element in the bag
  * Input:          item to be found in the bag
  * Returns:        address of the first occurrence of the item in the bag
- *                 or 0 if unsuccessful
+ *                 or NULL if unsuccessful
  * Error checking: none
  * Sample call:
  *    double number2 = 123.4
@@ -91,5 +91,26 @@ int bag_remove(void *item);
  *      printf("failed to find number2 in the bag");
  */
 void *bag_find(void *item);
+
+/*
+ * Function:       bag_next
+ * Purpose:        iterate and return the address of the next item in the bag
+ * Input:          
+ * Returns:        address of the next item in the bag
+ *                 or NULL if unsuccessful
+ * Error checking: none
+ * Sample call:
+ *   printf("the next item in the bag is %f", *bag_next());
+ */
+void *bag_next();
+
+/*
+ * Function:       bag_reset_current
+ * Purpose:        reset the current item to the start of the bag
+ * Input:          
+ * Returns:        1 for successful reset; 0 if unsuccessful
+ * Error checking: none
+ */
+int bag_reset_current();
 
 #endif

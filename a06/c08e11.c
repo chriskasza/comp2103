@@ -147,4 +147,21 @@ void *bag_next() {
 
 }
 
+/*
+ * Function:       bag_reset_current
+ * Purpose:        return the item from the bag
+ * Input:          
+ * Returns:        pointer to the next item or NULL if there is none
+ * Modifies:       
+ * Error checking: none
+ * Sample call:
+ *    double number2 = 123.4
+ *    double *numaddr;
+ *    if((numaddr = bag_find(number2)) == 0)
+ *      printf("failed to find number2 in the bag");
+ */
+int bag_reset_current() {
+
+}
+
 
