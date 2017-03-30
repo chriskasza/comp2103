@@ -18,18 +18,32 @@
  *
  */
 int main() {
+  const int NUMVALS = 10;
+  int numVals2 = NUMVALS * 2;
+  int numReadIn;
   double *b;
 
-  b = myAlloc(10);
+  b = myAlloc(NUMVALS);
 
-  get(b, 10);
+  numReadIn = get(b, NUMVALS);
 
-  printf("\nValues entered were: \n");
-  show(b, 10);
+  printf("\n%d values were entered: \n", numReadIn);
+  show(b, numReadIn);
 
-  printf("\nMax value entered was %f.\n", max(b, 10));
+  printf("\nMax value entered was %f.\n", max(b, numReadIn));
 
-  /*  Dereferencing for practice */
+  free(b);
+  b = NULL;
+
+  b = myAlloc(numVals2);
+
+  numReadIn = get(b, numVals2);
+
+  printf("\n%d values were entered: \n", numReadIn);
+  show(b, numReadIn);
+
+  printf("\nMax value entered was %f.\n", max(b, numReadIn));
+
   free(b);
   b = NULL;
 

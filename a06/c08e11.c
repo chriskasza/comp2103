@@ -29,6 +29,14 @@ static void *bag_ = NULL;  /* the bag */
 static void *current_ = NULL; /* current item for enumeration */
 
 /*
+void print_statics() {
+  printf("initialized %d  num_eles %d", initialized_, num_eles_);
+  printf("bag_size %lu  ele_size %lu", bag_size_, ele_size_);
+  printf("bag %p  current %p\n", bag_, current_);
+}
+*/
+
+/*
  * Function:       bag_construct
  * Purpose:        construct a bag
  * Input:

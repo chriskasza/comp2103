@@ -18,19 +18,19 @@
   (((p) = malloc((n)*sizeof(type))) == NULL)
 
 /*
- * Function: round
+ * Function: myround
  * Purpose: round a double to an integer
  * Input: x is a double value
  * Returns: x, rounded to the nearest integer
  * Error checking: none
  * Sample call:
- *   a = round(3.1)
+ *   a = myround(3.1)
  *   -- will return 3
- *   b = round(3.5)
+ *   b = myround(3.5)
  *   -- will return 4
  *
  */
-int round(double x) {
+int myround(double x) {
   return (x >= 0) ? (int)(x + 0.5) : (int)(x - 0.5);
 }
 
@@ -82,13 +82,16 @@ int get(double block[], int size) {
   printf("array. Enter 1 to quit before %d values ", size);
   printf("have been entered.\n");
 
+  while ((c = getchar()) != EOF && c != '\n');
+
   for (i = 0; i < size; i++) {
     if (scanf("%lf", &block[i]) != 1) {
+      while ((c = getchar()) != EOF && c != '\n');
       fprintf(stderr, "invalid value\n");
-      return EXIT_FAILURE;
+      break;
     }
     while ((c = getchar()) != EOF && c != '\n');
-    if (round(block[i]) == 1) {
+    if (myround(block[i]) == 1) {
       block[i] = 0;
       break;
     }
