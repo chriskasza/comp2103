@@ -13,6 +13,8 @@
 #ifndef C08E11
 #define C08E11
 
+#include <stddef.h>
+
 /*
  * Function:       bag_construct
  * Purpose:        construct a bag
@@ -29,7 +31,7 @@
  *      printf("failed to make the bag");
  *
  */
-int bag_construct(int count, size_t size);
+int bag_construct(size_t count, size_t size);
 
 /*
  * Function:       bag_destruct
@@ -66,51 +68,18 @@ int bag_add(void *item);
  * Function:       bag_remove
  * Purpose:        remove an element from the bag
  * Input:          item to remove
+ *                 a function to compare two elements which returns 1 on match
+ *                   and 0 otherwise
  * Returns:        1 upon success and 0 if unsuccessful
  * Modifies:       removes the first occurrence of an element from the bag
  * Error checking: checks if the bag is initialized
  *                 checks if the bag is empty
  * Sample call:
  *    double number1 = 123.4
- *    if(bag_remove(number1) == 0)
+ *    if(bag_remove(number1, doubleCompare) == 0)
  *      printf("failed to remove number1 from the bag");
+ *
  */
-int bag_remove(void *item);
-
-/*
- * Function:       bag_find
- * Purpose:        find an element in the bag
- * Input:          item to be found in the bag
- * Returns:        address of the first occurrence of the item in the bag
- *                 or NULL if unsuccessful
- * Error checking: none
- * Sample call:
- *    double number2 = 123.4
- *    double *numaddr;
- *    if((numaddr = bag_find(number2)) == 0)
- *      printf("failed to find number2 in the bag");
- */
-void *bag_find(void *item);
-
-/*
- * Function:       bag_next
- * Purpose:        iterate and return the address of the next item in the bag
- * Input:          
- * Returns:        address of the next item in the bag
- *                 or NULL if unsuccessful
- * Error checking: none
- * Sample call:
- *   printf("the next item in the bag is %f", *bag_next());
- */
-void *bag_next();
-
-/*
- * Function:       bag_reset_current
- * Purpose:        reset the current item to the start of the bag
- * Input:          
- * Returns:        1 for successful reset; 0 if unsuccessful
- * Error checking: none
- */
-int bag_reset_current();
+int bag_remove(void *item, int (*compare)(const void *, const void *));
 
 #endif

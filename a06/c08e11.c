@@ -10,14 +10,21 @@
  * as enumeration.
  */
 
-#include <stdlib.h>
 #include "c08e11.h"
+#include <stddef.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 #define NOT_INITIALIZED 0
 #define INITIALIZED 1
+#define VOID(targ,size) ((void *)(((char *)(targ)) + (size)))
+#define VOIDSUB(targ,size) ((void *)(((char *)(targ)) - (size)))
 
 static int initialized_ = NOT_INITIALIZED;
-
+static int num_eles_;  /* number of elements in bag */
+static size_t bag_size_;  /* size of the whole bag */
+static size_t ele_size_;  /* size of an element in the bag */
 static void *bag_ = NULL;  /* the bag */
 static void *current_ = NULL; /* current item for enumeration */
 
@@ -37,7 +44,7 @@ static void *current_ = NULL; /* current item for enumeration */
  *      printf("failed to make the bag");
  *
  */
-int bag_construct(int count, size_t size) {
+int bag_construct(size_t count, size_t size) {
   if(initialized_ == INITIALIZED)
     return 0;
 
@@ -47,6 +54,10 @@ int bag_construct(int count, size_t size) {
   if((bag_ = malloc(count*size)) == NULL)
     return 0;
 
+  ele_size_ = size;
+  bag_size_ = count*size;
+  num_eles_ = 0;
+  current_ = bag_;
   initialized_ = INITIALIZED;
 
   return 1;
@@ -69,7 +80,11 @@ int bag_destruct() {
     return 0;
 
   free(bag_);
+  ele_size_ = 0;
+  bag_size_ = 0;
+  num_eles_ = 0;
   initialized_ = NOT_INITIALIZED;
+  current_ = NULL;
   bag_ = NULL;
 
   return 1;
@@ -91,7 +106,16 @@ int bag_destruct() {
  *
  */
 int bag_add(void *item) {
-  
+  if(initialized_ == NOT_INITIALIZED)
+    return 0;
+
+  if(current_ == VOID(bag_, bag_size_))
+    return 0;
+
+  memcpy(current_, item, ele_size_);
+  current_ = VOID(current_, ele_size_);
+  num_eles_++;
+  return 1;
 }
 
 /*
@@ -106,62 +130,33 @@ int bag_add(void *item) {
  *    double number1 = 123.4
  *    if(bag_remove(number1) == 0)
  *      printf("failed to remove number1 from the bag");
+ *
  */
-int bag_remove(void *item) {
+int bag_remove(void *item, int (*compare)(const void *, const void *)) {
+  void *itemenum = NULL;
 
+  if(initialized_ == NOT_INITIALIZED)
+    return 0;
+
+  if(current_ == bag_)
+    return 0;
+
+  for(itemenum = bag_; itemenum < VOID(bag_, ele_size_*num_eles_);
+      itemenum = VOID(itemenum, ele_size_)) {
+    if(compare(itemenum, item) == 1)
+      break;
+  }
+
+  if(itemenum == VOID(bag_, bag_size_))
+    return 0;
+
+  for(; itemenum < VOID(bag_, ele_size_*num_eles_);
+      itemenum = VOID(itemenum, ele_size_)) {
+    memmove(itemenum, VOID(itemenum, ele_size_), ele_size_);
+  }
+
+  num_eles_--;
+  current_ = VOIDSUB(current_, ele_size_);
+
+  return 1;
 }
-
-/*
- * Function:       bag_find
- * Purpose:        find an element in the bag
- * Input:          item to be found in the bag
- * Returns:        address of the first occurrence of the item in the bag
- *                 or 0 if unsuccessful
- * Modifies:       
- * Error checking: none
- * Sample call:
- *    double number2 = 123.4
- *    double *numaddr;
- *    if((numaddr = bag_find(number2)) == 0)
- *      printf("failed to find number2 in the bag");
- */
-void *bag_find(void *item) {
-  /* use quicksort and binary search from stdlib.h? */
-}
-
-
-/*
- * Function:       bag_next
- * Purpose:        return the item from the bag
- * Input:          
- * Returns:        pointer to the next item or NULL if there is none
- * Modifies:       
- * Error checking: none
- * Sample call:
- *    double number2 = 123.4
- *    double *numaddr;
- *    if((numaddr = bag_find(number2)) == 0)
- *      printf("failed to find number2 in the bag");
- */
-void *bag_next() {
-
-}
-
-/*
- * Function:       bag_reset_current
- * Purpose:        return the item from the bag
- * Input:          
- * Returns:        pointer to the next item or NULL if there is none
- * Modifies:       
- * Error checking: none
- * Sample call:
- *    double number2 = 123.4
- *    double *numaddr;
- *    if((numaddr = bag_find(number2)) == 0)
- *      printf("failed to find number2 in the bag");
- */
-int bag_reset_current() {
-
-}
-
-
