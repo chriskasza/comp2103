@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # directory of assignment currently working on
-wd=a06
+wd=a07
 
 # a name for the session
 SESSION=comp2103
