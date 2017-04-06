@@ -3,7 +3,7 @@
  * Student #:  100133723
  * Course:     COMP 2103 N1
  * Version:    1.0
- * File:       c09e03.c
+ * File:       c09e03.h
  *
  * contains the function, lowerToUpper, which converts all characters to 
  * uppercase in a given string.

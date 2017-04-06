@@ -3,7 +3,7 @@
  * Student #:  100133723
  * Course:     COMP 2103 N1
  * Version:    1.0
- * File:       c09e07.c
+ * File:       c09e07.h
  *
  * read a given file and output lowercase and uppercase characters to
  * separate, specified files
