@@ -26,7 +26,7 @@
  *   -- will return 4
  *
  */
-int round(double x);
+int myround(double x);
 
 /*
  * Function: myAlloc
