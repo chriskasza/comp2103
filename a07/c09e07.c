@@ -11,7 +11,10 @@
  */
 
 #include <ctype.h>
+#include <errno.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 /*
  * Function:       split
@@ -31,5 +34,66 @@
  *      fprintf(stderr, "err: trouble spliting the file\n");
  */
 int split(const char* inName, const char* outName1, const char* outName2) {
-  
+  typedef enum { false, true } bool;
+  FILE *inFile;
+  FILE *lcFile;
+  FILE *ucFile;
+  int c;
+  bool fail = false;
+
+  if((inFile = fopen(inName, "r")) == NULL) {
+    fprintf(stderr, "%d: unable to open file, %s.\n", errno, inName);
+    return EXIT_FAILURE;
+  }
+
+  if((lcFile = fopen(outName1, "w")) == NULL) {
+    fprintf(stderr, "%d: unable to open file, %s.\n", errno, outName1);
+    return EXIT_FAILURE;
+  }
+
+  if((ucFile = fopen(outName2, "w")) == NULL) {
+    fprintf(stderr, "%d: unable to open file, %s.\n", errno, outName2);
+    return EXIT_FAILURE;
+  }
+
+  while((c = fgetc(inFile)) != EOF) {
+    if(islower(c) && (fputc(c, lcFile) == EOF)) {
+      fprintf(stderr, "failed to write to %s.\n", outName1);
+      return EXIT_FAILURE;
+    }
+    else if(isupper(c) && (fputc(c, ucFile) == EOF)) {
+      fprintf(stderr, "failed to write to %s.\n", outName2);
+      return EXIT_FAILURE;
+    }
+  }
+
+  if(fputc('\n', lcFile) == EOF) {
+    fprintf(stderr, "failed to write to %s.\n", outName1);
+    return EXIT_FAILURE;
+  }
+
+  if(fputc('\n', ucFile) == EOF) {
+    fprintf(stderr, "failed to write to %s.\n", outName1);
+    return EXIT_FAILURE;
+  }
+
+  if(fclose(inFile) == EOF) {
+    fprintf(stderr, "failed to close %s.\n", inName);
+    fail = true;
+  }
+
+  if(fclose(lcFile) == EOF) {
+    fprintf(stderr, "failed to close %s.\n", outName1);
+    fail = true;
+  }
+
+  if(fclose(ucFile) == EOF) {
+    fprintf(stderr, "failed to close %s.\n", outName2);
+    fail = true;
+  }
+
+  if(fail == true)
+    return EXIT_FAILURE;
+
+  return EXIT_SUCCESS;
 }
