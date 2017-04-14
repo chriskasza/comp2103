@@ -14,8 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MALLOC(p, type, n)  \
-  (((p) = malloc((n)*sizeof(type))) == NULL)
+#define MALLOC(p, type, n) (((p) = malloc((n)*sizeof(type))) == NULL)
 
 /*
  * Function: myround
