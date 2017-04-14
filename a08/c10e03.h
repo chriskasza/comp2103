@@ -21,14 +21,15 @@
  * Inputs:
  *   a:            the array to be reversed
  *   r:            pointer of where the reversed array will be stored
- *   n:            the size of the array
+ *   e:            the size of an element in the array
+ *   n:            the number of elements in the array
  * Returns:        1 if successful; 0 otherwise
  * Modifies:       the pointer, r, will be used to store the reversed array
  * Error checking: checks that n is positive
  * Sample call:
  *    reverse(*myarray, *myreversedarray, SIZE)
  */
-int reverse(void *a, void *r, size_t n);
+int reverse(void *a, void *r, size_t e, size_t n);
 
 /*
  * Function:       reverseMyself
@@ -36,13 +37,14 @@ int reverse(void *a, void *r, size_t n);
  *                 the original array
  * Inputs:
  *   a:            the array to be reversed
- *   n:            the size of the array
+ *   e:            the size of an element in the array
+ *   n:            the number of elements in the array
  * Returns:        1 if successful; 0 otherwise
  * Modifies:       the provided array is reversed in place
  * Error checking: checks that n is positive
  * Sample call:
  *    reverse(*myarray, SIZE)
  */
-int reverseMyself(void *a, size_t n);
+int reverseMyself(void *a, size_t e, size_t n);
 
 #endif
