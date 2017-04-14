@@ -3,27 +3,46 @@
  * Student #:  100133723
  * Course:     COMP 2103 N1
  * Version:    1.0
- * File:       c09e03.h
+ * File:       c10e03.h
  *
- * contains the function, lowerToUpper, which converts all characters to 
- * uppercase in a given string.
+ * a library of functions for reversing arrays.
  *
  */
 
-#ifndef C09E03
-#define C09E03
+#ifndef C10E03
+#define C10E03
+
+#include <stddef.h>
 
 /*
- * Function:       lowerToUpper
- * Purpose:        convert all alpha characters in a given string to uppercase
+ * Function:       reverse
+ * Purpose:        reverse a given array and return the reversed array by
+ *                 storing it at the location specified by the second parameter
  * Inputs:
- *   s:            a string
- * Returns:        nothing
- * Modifies:       the string provided
- * Error checking: verifies that s is a string
+ *   a:            the array to be reversed
+ *   r:            pointer of where the reversed array will be stored
+ *   n:            the size of the array
+ * Returns:        1 if successful; 0 otherwise
+ * Modifies:       the pointer, r, will be used to store the reversed array
+ * Error checking: checks that n is positive
  * Sample call:
- *    lowerToUpper(str)
+ *    reverse(*myarray, *myreversedarray, SIZE)
  */
-void lowerToUpper(char *s);
+int reverse(void *a, void *r, size_t n);
+
+/*
+ * Function:       reverseMyself
+ * Purpose:        reverse a given array such that the reversed array replaces
+ *                 the original array
+ * Inputs:
+ *   a:            the array to be reversed
+ *   n:            the size of the array
+ * Returns:        1 if successful; 0 otherwise
+ * Modifies:       the provided array is reversed in place
+ * Error checking: checks that n is positive
+ * Sample call:
+ *    reverse(*myarray, SIZE)
+ */
+int reverseMyself(void *a, size_t n);
 
 #endif
