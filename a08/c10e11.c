@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define BUF_SIZE 5
 
 /*
@@ -50,6 +50,13 @@ int getLine(FILE *in, char **result) {
   int i;        /* auxiliary variable */
   int base;
   static int size_ = 0; /* used to accumulate the size of the line */
+  static int j_ = 0; /* counter for recursion depth */
+
+  if(DEBUG)
+    j_++;
+
+  if(DEBUG && size_ == 0)
+    fprintf(stderr, "\n");
 
   /* try to read up to BUF_SIZE characters, stop on eoln and eof */
   for (i = 0; i < BUF_SIZE; i++) {
@@ -80,6 +87,9 @@ int getLine(FILE *in, char **result) {
       size_ = 0;
       return 0;
     }
+    if(DEBUG)
+      fprintf(stderr, "\t\t(DEBUG) buffer filled: %s\n", buf);
+    j_--;
   } else {
     if((*result = malloc((size_+1)*sizeof(char))) == NULL) {
       size_ = 0;
@@ -88,10 +98,17 @@ int getLine(FILE *in, char **result) {
     /* store the terminating \0 */
     (*result)[size_] = '\0';
   }
+
   /* Copy buf into the appropriate location */
   base = size_ - i ;
   memcpy(*result + base, buf, i);
   size_ -= i;
+
+  if(DEBUG && j_ == 1) {
+    fprintf(stderr, "\t(DEBUG) buffers concatenated: %s\n", *result);
+    j_--;
+  }
+
   return 1;
 }
 
@@ -113,13 +130,13 @@ int main(int argc, char ** argv) {
     fprintf(stderr, "can not open %s\n", argv[1]);
     return EXIT_FAILURE;
   }
-  printf("Displaying lines using a buffer of size 5\n");
+  printf("Displaying lines using a buffer of %3d\n", BUF_SIZE);
   for(count = 1; (result = getLine(f, &line)) != EOF; count++) {
     if(result == 0) {
       fprintf(stderr, "error encountered, terminating\n");
       return EXIT_FAILURE;
     }
-    printf("line #%d\t:%s\n", count, line);
+    printf("line #%d :%s\n", count, line);
     free(line);
   }
 
