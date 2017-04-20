@@ -1,0 +1,101 @@
+➜  a10 git:(master) ✗ make
+gcc -Wall -pedantic -std=c89 -c c11e19.c
+gcc -Wall -pedantic -std=c89   -c -o ex11-2-list.o ex11-2-list.c
+gcc -Wall -pedantic -std=c89 -c strdup.c
+gcc -Wall -pedantic -std=c89 -o c11e19 c11e19.o ex11-2-list.o strdup.o
+➜  a10 git:(master) ✗ ./c11e19 ../assignments.txt
+Done reading all 9 lines from ../assignments.txt into memory.  Which line do you want to go to? (1-9) 1
+
+a10
+
+
+Options
+1) print the current line
+2) edit the current line
+3) go to a different line
+4) print lines X to Y
+5) save and exit
+6) exit without saving
+Choose an option: [1-6] 4
+Which line do you want to start from? (1-9) 1
+Which line do you want to print to? (2-9) 9
+a10
+11-19 (p. 448)
+
+a11
+12-3 (p. 463)
+13-3 (p. 470)
+
+a12
+14-3 (p. 497)
+
+
+Options
+1) print the current line
+2) edit the current line
+3) go to a different line
+4) print lines X to Y
+5) save and exit
+6) exit without saving
+Choose an option: [1-6] 3
+Which line do you want to go to? (1-9) 2
+
+11-19 (p. 448)
+
+
+Options
+1) print the current line
+2) edit the current line
+3) go to a different line
+4) print lines X to Y
+5) save and exit
+6) exit without saving
+Choose an option: [1-6] 2
+Current contents of line:
+11-19 (p. 448)
+
+Enter the replacement line (max 80 chars):
+boop
+you entered:
+boop
+
+Options
+1) print the current line
+2) edit the current line
+3) go to a different line
+4) print lines X to Y
+5) save and exit
+6) exit without saving
+Choose an option: [1-6] 4
+Which line do you want to start from? (1-9) 1
+Which line do you want to print to? (2-9) 9
+a10
+boop
+
+a11
+12-3 (p. 463)
+13-3 (p. 470)
+
+a12
+14-3 (p. 497)
+
+
+Options
+1) print the current line
+2) edit the current line
+3) go to a different line
+4) print lines X to Y
+5) save and exit
+6) exit without saving
+Choose an option: [1-6] 5
+➜  a10 git:(master) ✗ cat ../assignments.txt
+a10
+boop
+
+a11
+12-3 (p. 463)
+13-3 (p. 470)
+
+a12
+14-3 (p. 497)
+

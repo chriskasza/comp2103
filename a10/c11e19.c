@@ -44,8 +44,6 @@ void clean_stdin(void) {
 int menu() {
   int option = 0;
 
-  clean_stdin();
-
   printf("\nOptions\n1) print the current line\n2) edit the current line\n"
          "3) go to a different line\n4) print lines X to Y\n"
          "5) save and exit\n6) exit without saving\nChoose an option: [1-6] ");
@@ -53,6 +51,9 @@ int menu() {
     printf("Invalid option.\n");
     return menu();
   }
+
+  clean_stdin();
+
   return option;
 }
 
@@ -108,7 +109,9 @@ int editLine() {
     return 0;
   }
 
-  if(insert_List(list, current, buffer) == 0) {
+  printf("you entered:\n%s", buffer);
+
+  if(insert_List(list, current-1, buffer) == 0) {
     fprintf(stderr, "failed to update line in list\n");
     return 0;
   }
@@ -130,6 +133,8 @@ int gotoLine() {
     printf("Invalid line.\n");
     return 1;
   }
+
+  clean_stdin();
 
   current = t;
   if(printLine() == 0)
@@ -155,12 +160,16 @@ int printLines() {
     return 0;
   }
 
+  clean_stdin();
+
   printf("Which line do you want to print to? (%d-%d) ",
          l1+1, length_List(list));
   if(scanf("%d", &l2) != 1 || l2 <= l1 || l2 > length_List(list)) {
     printf("Invalid line.\n");
     return 0;
   }
+
+  clean_stdin();
 
   e = construct_Enumeration(list);
 
@@ -201,15 +210,13 @@ int writeFile(char *filename) {
   Abstract_Enumeration e;
   char *aux;
 
-  printf("opening %s", filename);
-
   if((f = fopen(filename, "w")) == NULL) {
     fprintf(stderr, "can not open %s for writing\n", filename);
     return 0;
   }
 
   e = construct_Enumeration(list);
-  while(hasMoreElements_Enumeration(e) == 0) {
+  while(hasMoreElements_Enumeration(e) == 1) {
     aux=nextElementTyped_Enumeration(char*, e);
     fprintf(f, "%s", aux);
   }
@@ -296,8 +303,7 @@ int main(int argc, char **argv) {
                 EXIT_FAILURE;
               }
               break;
-      case 5: printf("about to pass %s to write func\n", argv[1]);
-              if(writeFile(filename) == 0) {
+      case 5: if(writeFile(filename) == 0) {
                 destruct_List(&list);
                 EXIT_FAILURE;
               }
