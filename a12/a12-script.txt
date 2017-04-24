@@ -1,0 +1,16 @@
+➜  a12 git:(master) ✗ make
+gcc -Wall -pedantic -std=c89 -c c14e03.c
+gcc -Wall -pedantic -std=c89   -c -o x14-3stack.o x14-3stack.c
+gcc -Wall -pedantic -std=c89 -o c14e03 c14e03.o x14-3stack.o
+➜  a12 git:(master) ✗ ./c14e03
+> 235+*
+16
+> 235*
+15   (warning: values left on the stack)
+> 22+
+4
+> 63/
+err: invalid character
+>
+➜  a12 git:(master) ✗
+
