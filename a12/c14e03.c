@@ -19,6 +19,7 @@
  *
  */
 
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,20 +27,6 @@
 
 #define EXPRSIZE 100
 #define DEBUG 0
-
-/*
- * Function:       compress
- * Purpose:        removes ith characters from a given string where the ith
- *                   bit in a given mask is a zero
- * Inputs:
- *   str:          the string to be compressed
- *   mask:         an 8-bit mask
- * Modifies:       the string provided is modified in memory
- * Error checking:
- */
-void compress(char *str, char mask) {
-  return;
-}
 
 /*
  * main
@@ -71,10 +58,12 @@ int main() {
         putchar('\n');
       }*/
 
-      if(chararray[i] >= '0' && chararray[i] <= '9') { /* operand */
+      /* if(chararray[i] >= '0' && chararray[i] <= '9') { operand */
+      if(isdigit(chararray[i]) != 0) { /* operand */
         if(DEBUG)
           printf("DEBUG: push %c\n", chararray[i]);
 
+        /*x = atoi(&chararray[i]);*/  /*atoi is for strings, so needs \0 */
         x = chararray[i] - '0';
         if(pushOnStack(x) == 0) {
           fprintf(stderr, "err: stack is full; discarding %c\n", chararray[i]);
